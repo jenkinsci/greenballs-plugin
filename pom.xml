@@ -42,6 +42,13 @@
     -->
     <finalName>${project.artifactId}</finalName>
     <defaultGoal>package</defaultGoal>
+    <extensions>
+      <extension>
+        <groupId>org.jvnet.wagon-svn</groupId>
+        <artifactId>wagon-svn</artifactId>
+        <version>RELEASE</version>
+      </extension>
+    </extensions>
     <plugins>
       <plugin>
         <groupId>org.jvnet.hudson.tools</groupId>
@@ -62,11 +69,6 @@
       </plugin>
     </plugins>
   </build>
-
-  <scm>
-    <connection>scm:git:git://github.com/asgeirn/greenballs.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/asgeirn/greenballs.git</developerConnection>
-  </scm>
 
   <repositories>
     <!-- We put the central repository first, as most artifacts will be
@@ -165,4 +167,12 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
+
+  <distributionManagement>
+    <repository>
+      <id>java.net-m2-repository</id>
+      <url>java-net:/maven2-repository/trunk/www/repository/</url>
+    </repository>
+  </distributionManagement>
+
 </project>
