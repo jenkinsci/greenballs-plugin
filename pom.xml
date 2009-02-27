@@ -70,6 +70,10 @@
     </plugins>
   </build>
 
+  <scm>
+    <connection>scm:svn:https://svn.dev.java.net/svn/hudson/trunk/hudson/plugins/greenballs</connection>
+  </scm>
+
   <repositories>
     <!-- We put the central repository first, as most artifacts will be
          found there
