@@ -4,7 +4,7 @@
   <groupId>no.twingine.hudson</groupId>
   <artifactId>greenballs</artifactId>
   <packaging>hpi</packaging>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.2</version>
   <name>Green Balls</name>
   <description>Because green balls are better than blue</description>
   <url>http://wiki.hudson-ci.org/display/HUDSON/Green+Balls</url>
@@ -72,7 +72,7 @@
   </build>
 
   <scm>
-    <connection>scm:svn:https://svn.dev.java.net/svn/hudson/trunk/hudson/plugins/greenballs</connection>
+    <connection>scm:svn:https://svn.dev.java.net/svn/hudson/tags/greenballs-1.2</connection>
   </scm>
 
   <repositories>
