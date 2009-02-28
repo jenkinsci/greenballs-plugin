@@ -1,9 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package no.twingine.hudson.greenballs;
+package org.jvnet.hudson.plugins.greenballs;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -19,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ANilsen
+ * @author Asgeir Storesund Nilsen
  */
 public class GreenBallFilter implements Filter {
 
@@ -33,14 +28,16 @@ public class GreenBallFilter implements Filter {
       final HttpServletRequest httpServletRequest = (HttpServletRequest) req;
       final HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
       final String uri = httpServletRequest.getRequestURI();
-      final Matcher m = pattern.matcher(uri);
-      if (m.matches())
-        httpServletResponse.sendRedirect("/plugin/greenballs/" + m.group(1) + "/green" + m.group(2) + ".gif");
+      if (uri.endsWith(".gif")) {
+        final Matcher m = pattern.matcher(uri);
+        if (m.matches()) {
+          httpServletResponse.sendRedirect("/plugin/greenballs/" + m.group(1) + "/green" + m.group(2) + ".gif");
+        }
+      }
     }
     chain.doFilter(req, resp);
   }
 
   public void destroy() {
   }
-
 }

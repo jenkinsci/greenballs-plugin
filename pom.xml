@@ -1,19 +1,42 @@
+<?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
-  <groupId>no.twingine.hudson</groupId>
+  <parent>
+    <groupId>org.jvnet.hudson.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <version>1.287</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
   <artifactId>greenballs</artifactId>
   <packaging>hpi</packaging>
   <version>1.3-SNAPSHOT</version>
   <name>Green Balls</name>
   <description>Because green balls are better than blue</description>
   <url>http://wiki.hudson-ci.org/display/HUDSON/Green+Balls</url>
-  
+  <inceptionYear>2009</inceptionYear>
+
   <properties>
     <!-- which version of Hudson is this plugin built against? -->
     <hudson.version>1.287</hudson.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.net.id>asgeirn</java.net.id>
   </properties>
 
+  <developers>
+    <developer>
+      <id>asgeirn</id>
+      <email>asgeir@twingine.no</email>
+      <name>Asgeir Storesund Nilsen</name>
+      <timezone>1</timezone>
+    </developer>
+  </developers>
+  <licenses>
+    <license>
+      <distribution>repo</distribution>
+      <name>The MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
   <dependencies>
     <dependency>
       <groupId>org.jvnet.hudson.main</groupId>
@@ -35,7 +58,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
+
   <build>
     <!--
       Since new versions need to overwrite old versions, it's better
@@ -47,7 +70,8 @@
       <extension>
         <groupId>org.jvnet.wagon-svn</groupId>
         <artifactId>wagon-svn</artifactId>
-        <version>RELEASE</version>
+        <!-- For some reason RELEASE doesn't work in Netbeans -->
+        <version>1.9</version>
       </extension>
     </extensions>
     <plugins>
@@ -62,17 +86,23 @@
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.0-beta-8</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
       </plugin>
     </plugins>
   </build>
 
   <scm>
     <connection>scm:svn:https://svn.dev.java.net/svn/hudson/trunk/hudson/plugins/greenballs</connection>
+    <developerConnection>scm:svn:https://svn.dev.java.net/svn/hudson/trunk/hudson/plugins/greenballs</developerConnection>
+    <url>https://hudson.dev.java.net/source/browse/hudson/hudson/plugins/greenballs</url>
   </scm>
 
   <repositories>

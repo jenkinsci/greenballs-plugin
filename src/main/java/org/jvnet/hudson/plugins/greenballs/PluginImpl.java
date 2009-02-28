@@ -1,4 +1,4 @@
-package no.twingine.hudson.greenballs;
+package org.jvnet.hudson.plugins.greenballs;
 
 import hudson.Plugin;
 import hudson.util.PluginServletFilter;

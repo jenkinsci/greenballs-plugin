@@ -3,8 +3,9 @@
  * and open the template in the editor.
  */
 
-package no.twingine.hudson.greenballs;
+package org.jvnet.hudson.plugins.greenballs;
 
+import org.jvnet.hudson.plugins.greenballs.GreenBallFilter;
 import java.util.regex.Matcher;
 import org.junit.Before;
 import org.junit.Test;
