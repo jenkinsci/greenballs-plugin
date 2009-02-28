@@ -31,7 +31,7 @@ public class GreenBallFilter implements Filter {
       if (uri.endsWith(".gif")) {
         final Matcher m = pattern.matcher(uri);
         if (m.matches()) {
-          httpServletResponse.sendRedirect("/plugin/greenballs/" + m.group(1) + "/green" + m.group(2) + ".gif");
+          httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/plugin/greenballs/" + m.group(1) + "/green" + m.group(2) + ".gif");
         }
       }
     }
