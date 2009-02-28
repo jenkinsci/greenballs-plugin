@@ -9,7 +9,7 @@
   </parent>
   <artifactId>greenballs</artifactId>
   <packaging>hpi</packaging>
-  <version>1.4-SNAPSHOT</version>
+  <version>1.4</version>
   <name>Green Balls</name>
   <description>Because green balls are better than blue</description>
   <url>http://wiki.hudson-ci.org/display/HUDSON/Green+Balls</url>
@@ -100,9 +100,9 @@
   </build>
 
   <scm>
-    <connection>scm:svn:https://svn.dev.java.net/svn/hudson/trunk/hudson/plugins/greenballs</connection>
-    <developerConnection>scm:svn:https://svn.dev.java.net/svn/hudson/trunk/hudson/plugins/greenballs</developerConnection>
-    <url>https://hudson.dev.java.net/source/browse/hudson/hudson/plugins/greenballs</url>
+    <connection>scm:svn:https://svn.dev.java.net/svn/hudson/tags/greenballs-1.4</connection>
+    <developerConnection>scm:svn:https://svn.dev.java.net/svn/hudson/tags/greenballs-1.4</developerConnection>
+    <url>https://hudson.dev.java.net/source/browse/hudson/hudson/plugins/greenballs/tags/greenballs-1.4</url>
   </scm>
 
   <repositories>
