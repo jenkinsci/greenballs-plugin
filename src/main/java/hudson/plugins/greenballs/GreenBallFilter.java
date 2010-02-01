@@ -1,4 +1,4 @@
-package org.jvnet.hudson.plugins.greenballs;
+package hudson.plugins.greenballs;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -35,6 +35,10 @@ public class GreenBallFilter implements Filter {
             if (uri.endsWith(".gif")) {
                 final Matcher m = pattern.matcher(uri);
                 if (m.matches()) {
+                    httpServletResponse.setHeader("Cache-Control",
+                            "public, s-maxage=86400");
+                    httpServletResponse.setDateHeader("Expires", System
+                            .currentTimeMillis() + 86400000);
                     httpServletResponse.sendRedirect(httpServletRequest
                             .getContextPath()
                             + "/plugin/greenballs/"

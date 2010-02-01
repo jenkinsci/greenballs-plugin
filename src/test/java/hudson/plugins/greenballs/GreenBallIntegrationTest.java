@@ -1,4 +1,4 @@
-package org.jvnet.hudson.plugins.greenballs;
+package hudson.plugins.greenballs;
 
 import java.net.URL;
 import java.util.Date;

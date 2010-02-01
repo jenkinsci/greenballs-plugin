@@ -3,9 +3,10 @@
  * and open the template in the editor.
  */
 
-package org.jvnet.hudson.plugins.greenballs;
+package hudson.plugins.greenballs;
 
-import org.jvnet.hudson.plugins.greenballs.GreenBallFilter;
+import hudson.plugins.greenballs.GreenBallFilter;
+
 import java.util.regex.Matcher;
 import org.junit.Before;
 import org.junit.Test;
