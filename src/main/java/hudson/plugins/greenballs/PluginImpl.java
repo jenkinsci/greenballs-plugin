@@ -7,6 +7,8 @@ import hudson.util.PluginServletFilter;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
@@ -16,16 +18,17 @@ import org.kohsuke.stapler.StaplerResponse;
 
 /**
  * Entry point of a plugin.
- * 
+ *
  * <p>
  * There must be one {@link Plugin} class in each plugin. See javadoc of
  * {@link Plugin} for more about what can be done on this class.
- * 
+ *
  * @author Kohsuke Kawaguchi
  */
 public class PluginImpl extends Plugin {
 
     PluginWrapper wrapper;
+    final Logger logger = Logger.getLogger("hudson.plugins.greenballs");
 
     @Override
     public void start() throws Exception {
@@ -37,9 +40,9 @@ public class PluginImpl extends Plugin {
             wrapperField.setAccessible(true);
             wrapper = (PluginWrapper) wrapperField.get(this);
         } catch (Exception e) {
-            e.printStackTrace();
+	    logger.log(Level.WARNING, "Unable to access plugin wrapper", e);
         } finally {
-            System.out.println("Green Balls!");
+	    logger.log(Level.INFO, "Green Balls!");
         }
     }
 
@@ -63,6 +66,7 @@ public class PluginImpl extends Plugin {
         }
 
         // use serveLocalizedFile to support automatic locale selection
+	logger.log(Level.FINE, "Serving cached resource {0}", path);
         rsp.serveLocalizedFile(req,
                 new URL(wrapper.baseResourceURL, '.' + path), 86400000);
     }
