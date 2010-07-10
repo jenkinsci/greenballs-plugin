@@ -22,47 +22,38 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class GreenBallFilter implements Filter {
 
-    final Pattern pattern = Pattern
-	    .compile(".+/(\\d{2}x\\d{2})/blue(_anime|)\\.gif");
+    final Pattern pattern = Pattern.compile(".+/(\\d{2}x\\d{2})/blue(_anime|)\\.gif");
     final Logger logger = Logger.getLogger("hudson.plugins.greenballs");
 
     public void init(FilterConfig config) throws ServletException {
     }
 
-    public void doFilter(ServletRequest req, ServletResponse resp,
-	    FilterChain chain) throws IOException, ServletException {
-	if (req instanceof HttpServletRequest
-		&& resp instanceof HttpServletResponse) {
-	    final HttpServletRequest httpServletRequest = (HttpServletRequest) req;
-	    final HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
-	    final String uri = httpServletRequest.getRequestURI();
-	    if (uri.endsWith(".gif")) {
-		final Matcher m = pattern.matcher(uri);
-		if (m.matches()) {
-		    if (logger.isLoggable(Level.FINE))
-			logger.log(Level.FINE, "Redirecting {0} to {1}",
-				new Object[] {
-					uri,
-					httpServletRequest.getContextPath()
-						+ "/plugin/greenballs/"
-						+ m.group(1) + "/green"
-						+ m.group(2) + ".gif" });
-		    httpServletResponse.setHeader("Cache-Control",
-			    "public, s-maxage=86400");
-		    httpServletResponse.setDateHeader("Expires", System
-			    .currentTimeMillis() + 86400000);
-		    RequestDispatcher dispatcher = httpServletRequest
-			    .getRequestDispatcher(httpServletRequest
-			    .getContextPath()
-			    + "/plugin/greenballs/"
-			    + m.group(1)
-			    + "/green"
-			    + m.group(2) + ".gif");
-		    dispatcher.forward(httpServletRequest, httpServletResponse);
-		}
-	    }
-	}
-	chain.doFilter(req, resp);
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException,
+            ServletException {
+        if (req instanceof HttpServletRequest && resp instanceof HttpServletResponse) {
+            final HttpServletRequest httpServletRequest = (HttpServletRequest) req;
+            final HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
+            final String uri = httpServletRequest.getRequestURI();
+            if (uri.endsWith(".gif")) {
+                final Matcher m = pattern.matcher(uri);
+                if (m.matches()) {
+                    if (logger.isLoggable(Level.FINE))
+                        logger.log(
+                                Level.FINE,
+                                "Redirecting {0} to {1}",
+                                new Object[] {
+                                        uri,
+                                        httpServletRequest.getContextPath() + "/plugin/greenballs/" + m.group(1)
+                                                + "/green" + m.group(2) + ".gif" });
+                    httpServletResponse.setHeader("Cache-Control", "public, s-maxage=86400");
+                    httpServletResponse.setDateHeader("Expires", System.currentTimeMillis() + 86400000);
+                    RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher(httpServletRequest
+                            .getContextPath() + "/plugin/greenballs/" + m.group(1) + "/green" + m.group(2) + ".gif");
+                    dispatcher.forward(httpServletRequest, httpServletResponse);
+                }
+            }
+        }
+        chain.doFilter(req, resp);
     }
 
     public void destroy() {
