@@ -9,7 +9,7 @@
   </parent>
   <artifactId>greenballs</artifactId>
   <packaging>hpi</packaging>
-  <version>1.7-SNAPSHOT</version>
+  <version>1.7</version>
   <name>Green Balls</name>
   <description>Because green balls are better than blue</description>
   <url>http://wiki.hudson-ci.org/display/HUDSON/Green+Balls</url>
@@ -98,9 +98,9 @@
   </build>
 
   <scm>
-    <connection>scm:svn:https://svn.dev.java.net/svn/hudson/trunk/hudson/plugins/greenballs</connection>
-    <developerConnection>scm:svn:https://svn.dev.java.net/svn/hudson/trunk/hudson/plugins/greenballs</developerConnection>
-    <url>https://hudson.dev.java.net/source/browse/hudson/hudson/plugins/greenballs</url>
+    <connection>scm:svn:https://svn.dev.java.net/svn/hudson/tags/greenballs-1.7</connection>
+    <developerConnection>scm:svn:https://svn.dev.java.net/svn/hudson/tags/greenballs-1.7</developerConnection>
+    <url>https://hudson.dev.java.net/source/browse/hudson/hudson/plugins/greenballs/tags/greenballs-1.7</url>
   </scm>
 
   <!-- get every artifact through maven.glassfish.org, which proxies all the artifacts that we need -->
