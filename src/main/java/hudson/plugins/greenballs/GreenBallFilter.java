@@ -41,14 +41,9 @@ public class GreenBallFilter implements Filter {
                         logger.log(
                                 Level.FINE,
                                 "Redirecting {0} to {1}",
-                                new Object[] {
-                                        uri,
-                                        httpServletRequest.getContextPath() + "/plugin/greenballs/" + m.group(1)
-                                                + "/green" + m.group(2) + ".gif" });
-                    httpServletResponse.setHeader("Cache-Control", "public, s-maxage=86400");
-                    httpServletResponse.setDateHeader("Expires", System.currentTimeMillis() + 86400000);
-                    RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher(httpServletRequest
-                            .getContextPath() + "/plugin/greenballs/" + m.group(1) + "/green" + m.group(2) + ".gif");
+                                new Object[] { uri, "/plugin/greenballs/" + m.group(1) + "/green" + m.group(2) + ".gif" });
+                    RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher("/plugin/greenballs/"
+                            + m.group(1) + "/green" + m.group(2) + ".gif");
                     dispatcher.forward(httpServletRequest, httpServletResponse);
                 }
             }
