@@ -9,7 +9,7 @@
   </parent>
   <artifactId>greenballs</artifactId>
   <packaging>hpi</packaging>
-  <version>1.9-SNAPSHOT</version>
+  <version>1.9</version>
   <name>Green Balls</name>
   <description>Because green balls are better than blue</description>
   <url>http://wiki.hudson-ci.org/display/HUDSON/Green+Balls</url>
