@@ -25,7 +25,7 @@
 for src in *.svg
 do
   echo processing $src
-  e=$(echo $src | sed -e s/.svg/.gif/ )
+  e=$(echo $src | sed -e s/.svg/.png/ )
   for sz in 16 24 32 48
   do
     dst=${sz}x${sz}/$e
@@ -37,7 +37,7 @@ do
       #   -compose Dst_Over $dst
       #composite -compose Dst_Over -tile xc:white t.png $dst
       #rm t.png
-      convert $src -resize ${sz}x${sz} -compose Dst_Over -tile xc:white $dst
+      convert $src -resize ${sz}x${sz} -compose Dst_Over -tile xc:white PNG32:$dst
     fi
   done
 done

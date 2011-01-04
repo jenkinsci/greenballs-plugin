@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class GreenBallFilter implements Filter {
 
-    final Pattern pattern = Pattern.compile(".+/(\\d{2}x\\d{2})/blue(_anime|)\\.gif");
+    final Pattern pattern = Pattern.compile("/(\\d{2}x\\d{2})/blue(_anime|)\\.(gif|png)");
     final Logger logger = Logger.getLogger("hudson.plugins.greenballs");
 
     public void init(FilterConfig config) throws ServletException {
@@ -34,16 +34,16 @@ public class GreenBallFilter implements Filter {
             final HttpServletRequest httpServletRequest = (HttpServletRequest) req;
             final HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
             final String uri = httpServletRequest.getRequestURI();
-            if (uri.endsWith(".gif")) {
+            if (uri.endsWith(".gif") || uri.endsWith(".png")) {
                 final Matcher m = pattern.matcher(uri);
-                if (m.matches()) {
+                if (m.find()) {
                     if (logger.isLoggable(Level.FINE))
                         logger.log(
                                 Level.FINE,
                                 "Redirecting {0} to {1}",
-                                new Object[] { uri, "/plugin/greenballs/" + m.group(1) + "/green" + m.group(2) + ".gif" });
+                                new Object[] { uri, "/plugin/greenballs/" + m.group(1) + "/green" + m.group(2) + "." + m.group(3) });
                     RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher("/plugin/greenballs/"
-                            + m.group(1) + "/green" + m.group(2) + ".gif");
+                            + m.group(1) + "/green" + m.group(2) + "." + m.group(3));
                     dispatcher.forward(httpServletRequest, httpServletResponse);
                     return;
                 }
