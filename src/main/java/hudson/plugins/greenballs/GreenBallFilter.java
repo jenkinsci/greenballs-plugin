@@ -45,6 +45,7 @@ public class GreenBallFilter implements Filter {
                     RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher("/plugin/greenballs/"
                             + m.group(1) + "/green" + m.group(2) + ".gif");
                     dispatcher.forward(httpServletRequest, httpServletResponse);
+                    return;
                 }
             }
         }
