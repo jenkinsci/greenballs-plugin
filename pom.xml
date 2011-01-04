@@ -97,13 +97,23 @@
           <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
+       <!-- the following part is needed only if your plugin build against
+       1.387 or earlier Hudson -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+	<version>2.1</version>
+        <configuration>
+          <goals>deploy</goals>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
   <scm>
-    <connection>scm:svn:https://svn.dev.java.net/svn/hudson/trunk/hudson/plugins/greenballs</connection>
-    <developerConnection>scm:svn:https://svn.dev.java.net/svn/hudson/trunk/hudson/plugins/greenballs</developerConnection>
-    <url>https://hudson.dev.java.net/source/browse/hudson/hudson/plugins/greenballs</url>
+    <connection>scm:git:git://github.com/hudson/greenballs-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:hudson/greenballs-plugin.git</developerConnection>
+    <url>https://github.com/hudson/greenballs-plugin</url>
   </scm>
 
   <!-- get every artifact through maven.glassfish.org, which proxies all the artifacts that we need -->

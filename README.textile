@@ -1,0 +1,4 @@
+h1. Green Balls for Hudson
+
+For more information please visit the "plugin information page.":http://wiki.hudson-ci.org/display/HUDSON/Green+Balls
+
