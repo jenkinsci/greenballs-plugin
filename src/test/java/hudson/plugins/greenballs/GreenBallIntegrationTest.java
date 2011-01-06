@@ -40,7 +40,7 @@ public class GreenBallIntegrationTest extends HudsonTestCase {
         final URL url = new URL(join(wc.getContextPath(), "images/48x48/blue.png"));
         final WebResponse webResponse = wc.getPage(url).getWebResponse();
         String digest = hash("SHA-1", webResponse.getContentAsBytes());
-        assertEquals("Content does not match expected digest", "05341c6c8059875d107199063ed0b9422d748cf8", digest);
+        assertEquals("Content does not match expected digest", "d2ab170a1f45dd6cf1e1580d0422abc88d6d9006", digest);
         assertTrue("Cache-Control header missing",
                 webResponse.getResponseHeaderValue("Cache-Control").contains("s-maxage"));
         assertTrue("Response has expired",
