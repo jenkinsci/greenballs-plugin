@@ -9,7 +9,7 @@
   </parent>
   <artifactId>greenballs</artifactId>
   <packaging>hpi</packaging>
-  <version>1.10-SNAPSHOT</version>
+  <version>1.10</version>
   <name>Green Balls</name>
   <description>Because green balls are better than blue</description>
   <url>http://wiki.hudson-ci.org/display/HUDSON/Green+Balls</url>
@@ -37,39 +37,20 @@
       <url>http://www.opensource.org/licenses/mit-license.php</url>
     </license>
   </licenses>
-  <dependencies><!--
+  <dependencies><!-- <dependency> <groupId>org.jvnet.hudson.main</groupId> <artifactId>hudson-core</artifactId> <version>${hudson.version}</version> 
+      <scope>provided</scope> </dependency> <dependency> <groupId>org.jvnet.hudson.main</groupId> <artifactId>hudson-war</artifactId> 
+      <type>war</type> <version>${hudson.version}</version> <scope>test</scope> </dependency> -->
     <dependency>
-      <groupId>org.jvnet.hudson.main</groupId>
-      <artifactId>hudson-core</artifactId>
-      <version>${hudson.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jvnet.hudson.main</groupId>
-      <artifactId>hudson-war</artifactId>
-      <type>war</type>
-      <version>${hudson.version}</version>
-      <scope>test</scope>
-    </dependency>
-    --><dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.8.2</version>
       <scope>test</scope>
-    </dependency><!--
-    <dependency>
-      <groupId>org.jvnet.hudson.main</groupId>
-      <artifactId>hudson-test-harness</artifactId>
-      <version>${hudson.version}</version>
-      <scope>test</scope>
-    </dependency>
-  --></dependencies>
+    </dependency><!-- <dependency> <groupId>org.jvnet.hudson.main</groupId> <artifactId>hudson-test-harness</artifactId> 
+      <version>${hudson.version}</version> <scope>test</scope> </dependency> -->
+  </dependencies>
 
   <build>
-    <!--
-      Since new versions need to overwrite old versions, it's better
-      not to have version number in the .hpi file name.
-    -->
+    <!-- Since new versions need to overwrite old versions, it's better not to have version number in the .hpi file name. -->
     <finalName>${project.artifactId}</finalName>
     <defaultGoal>package</defaultGoal>
     <extensions>
@@ -84,7 +65,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-	<version>2.3.2</version>
+        <version>2.3.2</version>
         <configuration>
           <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
@@ -92,17 +73,16 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-	<version>2.4.3</version>
+        <version>2.4.3</version>
         <configuration>
           <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
-       <!-- the following part is needed only if your plugin build against
-       1.387 or earlier Hudson -->
+      <!-- the following part is needed only if your plugin build against 1.387 or earlier Hudson -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-	<version>2.1</version>
+        <version>2.1</version>
         <configuration>
           <goals>deploy</goals>
         </configuration>
