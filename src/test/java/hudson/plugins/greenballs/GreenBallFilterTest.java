@@ -20,12 +20,12 @@ public class GreenBallFilterTest {
 
   @Before
   public void setup() {
-    greenBallFilter = new GreenBallFilter();
+    greenBallFilter = new GreenBallFilter(null);
   }
 
   @Test
   public void patternShouldMatch() {
-    final Matcher m = greenBallFilter.pattern.matcher("/nocacheImages/48x48/blue.gif");
+    final Matcher m = greenBallFilter.patternBlue.matcher("/nocacheImages/48x48/blue.gif");
     assertThat(m.find(), is(true));
     assertThat(m.group(1), equalTo("48x48"));
     assertThat(m.group(2), equalTo(""));
@@ -34,7 +34,7 @@ public class GreenBallFilterTest {
 
   @Test
   public void patternShouldMatchPNG() {
-    final Matcher m = greenBallFilter.pattern.matcher("/nocacheImages/48x48/blue.png");
+    final Matcher m = greenBallFilter.patternBlue.matcher("/nocacheImages/48x48/blue.png");
     assertThat(m.find(), is(true));
     assertThat(m.group(1), equalTo("48x48"));
     assertThat(m.group(2), equalTo(""));
@@ -43,7 +43,7 @@ public class GreenBallFilterTest {
 
   @Test
   public void patternShouldAlsoMatch() {
-    final Matcher m = greenBallFilter.pattern.matcher("/nocacheImages/48x48/blue_anime.gif");
+    final Matcher m = greenBallFilter.patternBlue.matcher("/nocacheImages/48x48/blue_anime.gif");
     assertThat(m.find(), is(true));
     assertThat(m.group(1), equalTo("48x48"));
     assertThat(m.group(2), equalTo("_anime"));
@@ -51,7 +51,7 @@ public class GreenBallFilterTest {
 
   @Test
   public void patternShouldNotMatch() {
-    final Matcher m = greenBallFilter.pattern.matcher("/nocacheImages/48x48/red_anime.gif");
+    final Matcher m = greenBallFilter.patternBlue.matcher("/nocacheImages/48x48/red_anime.gif");
     assertThat(m.find(), is(false));
   }
 }

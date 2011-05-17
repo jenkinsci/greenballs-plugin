@@ -2,6 +2,7 @@ package hudson.plugins.greenballs;
 
 import hudson.Plugin;
 import hudson.PluginWrapper;
+import hudson.model.Descriptor.FormException;
 import hudson.util.ColorPalette;
 import hudson.util.PluginServletFilter;
 
@@ -14,6 +15,8 @@ import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONObject;
 
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
@@ -29,13 +32,24 @@ import org.kohsuke.stapler.StaplerResponse;
  */
 public class PluginImpl extends Plugin {
 
-    PluginWrapper wrapper;
-    final Logger logger = Logger.getLogger("hudson.plugins.greenballs");
+    transient PluginWrapper wrapper;
+    transient final Logger logger = Logger.getLogger("hudson.plugins.greenballs");
+    
+    private String colorBlindPeople;
 
+    public String getColorBlindPeople() {
+      return colorBlindPeople;
+    }
+
+    public void setColorBlindPeople(String colorBlindPeople) {
+      this.colorBlindPeople = colorBlindPeople;
+    }
+    
     @Override
     public void start() throws Exception {
-        super.start();
-        PluginServletFilter.addFilter(new GreenBallFilter());
+        super.start();        
+        load();
+        PluginServletFilter.addFilter(new GreenBallFilter(this));
         try {
             wrapper = null;
             Field wrapperField = Plugin.class.getDeclaredField("wrapper");
@@ -76,4 +90,10 @@ public class PluginImpl extends Plugin {
         logger.log(Level.FINE, "Serving cached resource {0}", path);
         rsp.serveLocalizedFile(req, new URL(wrapper.baseResourceURL, '.' + path), 86400000);
     }
+    
+    @Override
+    public void configure(StaplerRequest req, JSONObject formData) throws IOException, ServletException, FormException {
+    	this.colorBlindPeople = formData.getString("colorBlindPeople");
+    	save();
+    } 
 }
