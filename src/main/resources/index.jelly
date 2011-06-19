@@ -4,5 +4,5 @@
   Since we don't really have anything dynamic here, let's just use static HTML. 
 -->
 <div>
-  Because green is better than blue!
+  Because green is better than blue! For color blind support configure user property.
 </div>

@@ -1,6 +1,7 @@
 package hudson.plugins.greenballs;
 
 import hudson.model.Hudson;
+import hudson.model.User;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -18,15 +19,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.util.StringUtils;
-
 /**
  * 
  * @author Asgeir Storesund Nilsen
  */
 public class GreenBallFilter implements Filter {
-
-  private PluginImpl plugin;
 
   final String patternStr = "/(\\d{2}x\\d{2})/%s(_anime|)\\.(gif|png)";
 
@@ -38,10 +35,6 @@ public class GreenBallFilter implements Filter {
 
   final Logger logger = Logger.getLogger("hudson.plugins.greenballs");
 
-  public GreenBallFilter(PluginImpl plugin) {
-    this.plugin = plugin;
-  }
-
   public void init(FilterConfig config) throws ServletException {
   }
 
@@ -51,16 +44,11 @@ public class GreenBallFilter implements Filter {
       final HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
       final String uri = httpServletRequest.getRequestURI();
       if (uri.endsWith(".gif") || uri.endsWith(".png")) {
-        boolean supportColorBlind = false;
-        for (String accountName : StringUtils.commaDelimitedListToStringArray(plugin.getColorBlindPeople())) {
-          if (accountName.trim().equals(Hudson.getAuthentication().getName())) {
-            supportColorBlind = true;
-            break;
-          }
-        }
         String newImageUrl = null;
         Matcher m;
-        if (supportColorBlind) {
+        User user = Hudson.getInstance().getUser(Hudson.getAuthentication().getName());
+        ColorBlindProperty colorBlindProperty = user.getProperty(ColorBlindProperty.class);
+        if (colorBlindProperty != null && colorBlindProperty.isEnabledColorBlindSupport()) {         
           if ((m = patternBlue.matcher(uri)).find()) {
             newImageUrl = "/plugin/greenballs/colorblind/" + m.group(1) + "/green" + m.group(2) + ".gif";
           } else if ((m = patternRed.matcher(uri)).find()) {

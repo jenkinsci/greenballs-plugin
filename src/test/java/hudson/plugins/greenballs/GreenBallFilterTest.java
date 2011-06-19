@@ -20,7 +20,7 @@ public class GreenBallFilterTest {
 
   @Before
   public void setup() {
-    greenBallFilter = new GreenBallFilter(null);
+    greenBallFilter = new GreenBallFilter();
   }
 
   @Test
