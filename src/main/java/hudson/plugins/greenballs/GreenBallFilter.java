@@ -44,23 +44,7 @@ public class GreenBallFilter implements Filter {
       final HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
       final String uri = httpServletRequest.getRequestURI();
       if (uri.endsWith(".gif") || uri.endsWith(".png")) {
-        String newImageUrl = null;
-        Matcher m;
-        User user = Hudson.getInstance().getUser(Hudson.getAuthentication().getName());
-        ColorBlindProperty colorBlindProperty = user.getProperty(ColorBlindProperty.class);
-        if (colorBlindProperty != null && colorBlindProperty.isEnabledColorBlindSupport()) {         
-          if ((m = patternBlue.matcher(uri)).find()) {
-            newImageUrl = "/plugin/greenballs/colorblind/" + m.group(1) + "/green" + m.group(2) + ".gif";
-          } else if ((m = patternRed.matcher(uri)).find()) {
-            newImageUrl = "/plugin/greenballs/colorblind/" + m.group(1) + "/red" + m.group(2) + ".gif";
-          } else if ((m = patternYellow.matcher(uri)).find()) {
-            newImageUrl = "/plugin/greenballs/colorblind/" + m.group(1) + "/yellow" + m.group(2) + ".gif";
-          }
-        } else {
-          if ((m = patternBlue.matcher(uri)).find()) {
-            newImageUrl = "/plugin/greenballs/" + m.group(1) + "/green" + m.group(2) + "." + m.group(3);
-          }
-        }
+        String newImageUrl = mapImage(uri);
         if (newImageUrl != null) {
           if (logger.isLoggable(Level.FINE)) {
             logger.log(Level.FINE, "Redirecting {0} to {1}", new Object[] { uri, newImageUrl });
@@ -72,6 +56,29 @@ public class GreenBallFilter implements Filter {
       }
     }
     chain.doFilter(req, resp);
+  }
+
+  private String mapImage(String uri) {
+    Matcher m;
+    User user = Hudson.getInstance().getUser(Hudson.getAuthentication().getName());
+    if (user!=null) {
+      ColorBlindProperty colorBlindProperty = user.getProperty(ColorBlindProperty.class);
+      if (colorBlindProperty != null && colorBlindProperty.isEnabledColorBlindSupport()) {
+        if ((m = patternBlue.matcher(uri)).find()) {
+          return "/plugin/greenballs/colorblind/" + m.group(1) + "/green" + m.group(2) + ".gif";
+        } else if ((m = patternRed.matcher(uri)).find()) {
+          return "/plugin/greenballs/colorblind/" + m.group(1) + "/red" + m.group(2) + ".gif";
+        } else if ((m = patternYellow.matcher(uri)).find()) {
+          return "/plugin/greenballs/colorblind/" + m.group(1) + "/yellow" + m.group(2) + ".gif";
+        }
+        return null;
+      }
+    }
+
+    if ((m = patternBlue.matcher(uri)).find()) {
+      return "/plugin/greenballs/" + m.group(1) + "/green" + m.group(2) + "." + m.group(3);
+    }
+    return null;
   }
 
   public void destroy() {
