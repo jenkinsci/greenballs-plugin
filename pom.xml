@@ -2,10 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.jvnet.hudson.plugins</groupId>
+    <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.392</version>
-    <relativePath>../pom.xml</relativePath>
+    <version>1.440</version>
   </parent>
   <artifactId>greenballs</artifactId>
   <packaging>hpi</packaging>
@@ -16,10 +15,7 @@
   <inceptionYear>2009</inceptionYear>
 
   <properties>
-    <!-- which version of Hudson is this plugin built against? -->
-    <hudson.version>${project.parent.version}</hudson.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.net.id>asgeirn</java.net.id>
   </properties>
 
   <developers>
@@ -37,17 +33,6 @@
       <url>http://www.opensource.org/licenses/mit-license.php</url>
     </license>
   </licenses>
-  <dependencies><!-- <dependency> <groupId>org.jvnet.hudson.main</groupId> <artifactId>hudson-core</artifactId> <version>${hudson.version}</version> 
-      <scope>provided</scope> </dependency> <dependency> <groupId>org.jvnet.hudson.main</groupId> <artifactId>hudson-war</artifactId> 
-      <type>war</type> <version>${hudson.version}</version> <scope>test</scope> </dependency> -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.8.2</version>
-      <scope>test</scope>
-    </dependency><!-- <dependency> <groupId>org.jvnet.hudson.main</groupId> <artifactId>hudson-test-harness</artifactId> 
-      <version>${hudson.version}</version> <scope>test</scope> </dependency> -->
-  </dependencies>
 
   <build>
     <!-- Since new versions need to overwrite old versions, it's better not to have version number in the .hpi file name. -->
@@ -61,33 +46,6 @@
         <version>1.9</version>
       </extension>
     </extensions>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
-        <configuration>
-          <encoding>${project.build.sourceEncoding}</encoding>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>2.4.3</version>
-        <configuration>
-          <encoding>${project.build.sourceEncoding}</encoding>
-        </configuration>
-      </plugin>
-      <!-- the following part is needed only if your plugin build against 1.387 or earlier Hudson -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.1</version>
-        <configuration>
-          <goals>deploy</goals>
-        </configuration>
-      </plugin>
-    </plugins>
   </build>
 
   <scm>
@@ -113,8 +71,8 @@
 
   <distributionManagement>
     <repository>
-      <id>java.net-m2-repository</id>
-      <url>http://maven.hudson-labs.org:8081/content/repositories/releases/</url>
+      <id>maven.jenkins-ci.org</id>
+      <url>http://maven.jenkins-ci.org:8081/content/repositories/releases/</url>
     </repository>
   </distributionManagement>
 
