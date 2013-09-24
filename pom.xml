@@ -1,4 +1,27 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+The MIT License
+
+Copyright (c) 2004-2011, Sun Microsystems, Inc., Kohsuke Kawaguchi, id:sorokh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -38,23 +61,24 @@
     <!-- Since new versions need to overwrite old versions, it's better not to have version number in the .hpi file name. -->
     <finalName>${project.artifactId}</finalName>
     <defaultGoal>package</defaultGoal>
-    <extensions>
-      <extension>
-        <groupId>org.jvnet.wagon-svn</groupId>
-        <artifactId>wagon-svn</artifactId>
-        <!-- For some reason RELEASE doesn't work in Netbeans -->
-        <version>1.9</version>
-      </extension>
-    </extensions>
   </build>
 
   <scm>
-    <connection>scm:git:git://github.com/jenkinsci/greenballs-plugin.git</connection>
-    <developerConnection>scm:git:git@github.com:jenkinsci/greenballs-plugin.git</developerConnection>
-    <url>https://github.com/jenkinsci/greenballs-plugin</url>
+    <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
+    <url>http://github.com/jenkinsci/${project.artifactId}-plugin</url>
   </scm>
 
-  <!-- get every artifact through maven.glassfish.org, which proxies all the artifacts that we need -->
+  <issueManagement>
+    <system>jira</system>
+    <url>https://issues.jenkins-ci.org/browse/JENKINS/component/15603</url>
+  </issueManagement>
+
+  <ciManagement>
+      <system>jenkins</system>
+      <url>https://buildhive.cloudbees.com/job/jenkinsci/job/greenballs-plugin/</url>
+  </ciManagement>
+
   <repositories>
     <repository>
       <id>repo.jenkins-ci.org</id>
