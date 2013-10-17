@@ -17,7 +17,7 @@ public class ColorBlindPropertyDescriptor extends UserPropertyDescriptor {
 
   @Override
   public String getDisplayName() {
-    return "Color blind suport";
+    return Messages.ColorBlindSupport_DisplayName();
   }
 
   private ColorBlindProperty newInstanceIfJSONIsNull(StaplerRequest req) throws FormException {
