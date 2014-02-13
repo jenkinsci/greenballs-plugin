@@ -59,7 +59,7 @@ public class GreenBallFilter implements Filter {
   }
 
   private String mapImage(String uri) {
-    if (uri.contains("plugin/greenballs/") && (uri.endsWith(".png") || uri.endsWith(".gif"))) return null;
+    if (uri.contains("plugin/greenballs/")) return null;
     Matcher m;
     User user = Hudson.getInstance().getUser(Hudson.getAuthentication().getName());
     if (user!=null) {
