@@ -53,7 +53,6 @@ public class PluginImpl extends Plugin {
     } catch (Exception e) {
       logger.log(Level.WARNING, "Unable to change BLUE ColorPalette", e);
     }
-    logger.log(Level.INFO, "Green Balls!");
   }
 
   @Override
