@@ -31,7 +31,7 @@ THE SOFTWARE.
   </parent>
   <artifactId>greenballs</artifactId>
   <packaging>hpi</packaging>
-  <version>1.15-SNAPSHOT</version>
+  <version>1.16-SNAPSHOT</version>
   <name>Green Balls</name>
   <description>Because green balls are better than blue</description>
   <url>http://wiki.jenkins-ci.org/display/JENKINS/Green+Balls</url>

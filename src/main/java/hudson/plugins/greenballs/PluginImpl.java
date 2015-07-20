@@ -4,19 +4,17 @@ import hudson.Plugin;
 import hudson.PluginWrapper;
 import hudson.util.ColorPalette;
 import hudson.util.PluginServletFilter;
+import org.kohsuke.stapler.StaplerRequest;
+import org.kohsuke.stapler.StaplerResponse;
 
-import java.awt.Color;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletResponse;
-
-import org.kohsuke.stapler.StaplerRequest;
-import org.kohsuke.stapler.StaplerResponse;
 
 /**
  * Entry point of a plugin.
@@ -47,9 +45,10 @@ public class PluginImpl extends Plugin {
       logger.log(Level.WARNING, "Unable to access plugin wrapper", e);
     }
     try {
+      ChartColorLoader colorLoader = new ChartColorLoader();
       Field colorValue = Color.class.getDeclaredField("value");
       colorValue.setAccessible(true);
-      colorValue.setInt(ColorPalette.BLUE, new Color(172, 218, 0).getRGB());
+      colorValue.setInt(ColorPalette.BLUE, colorLoader.loadColorFromProperties().getRGB());
     } catch (Exception e) {
       logger.log(Level.WARNING, "Unable to change BLUE ColorPalette", e);
     }
