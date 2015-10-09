@@ -1,5 +1,6 @@
 package hudson.plugins.greenballs;
 
+import hudson.init.InitMilestone;
 import hudson.model.Hudson;
 import hudson.model.User;
 
@@ -59,6 +60,8 @@ public class GreenBallFilter implements Filter {
   }
 
   private String mapImage(String uri) {
+    // Fix for JENKINS-28422
+    if (InitMilestone.EXTENSIONS_AUGMENTED.compareTo(Hudson.getInstance().getInitLevel()) > 0) return null;
     if (uri.contains("plugin/greenballs/")) return null;
     Matcher m;
     User user = Hudson.getInstance().getUser(Hudson.getAuthentication().getName());
