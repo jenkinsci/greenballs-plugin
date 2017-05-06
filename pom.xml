@@ -22,82 +22,71 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.jenkins-ci.plugins</groupId>
-    <artifactId>plugin</artifactId>
-    <version>1.440</version>
-  </parent>
-  <artifactId>greenballs</artifactId>
-  <packaging>hpi</packaging>
-  <version>1.15-SNAPSHOT</version>
-  <name>Green Balls</name>
-  <description>Because green balls are better than blue</description>
-  <url>http://wiki.jenkins-ci.org/display/JENKINS/Green+Balls</url>
-  <inceptionYear>2009</inceptionYear>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>plugin</artifactId>
+        <version>2.26</version>
+    </parent>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <artifactId>greenballs</artifactId>
+    <packaging>hpi</packaging>
+    <version>1.15-SNAPSHOT</version>
+    <name>Green Balls</name>
+    <description>Because green balls are better than blue</description>
+    <url>http://wiki.jenkins-ci.org/display/JENKINS/Green+Balls</url>
+    <inceptionYear>2009</inceptionYear>
 
-  <developers>
-    <developer>
-      <id>asgeirn</id>
-      <email>asgeir@twingine.no</email>
-      <name>Asgeir Storesund Nilsen</name>
-      <timezone>1</timezone>
-    </developer>
-  </developers>
-  <licenses>
-    <license>
-      <distribution>repo</distribution>
-      <name>The MIT License</name>
-      <url>http://www.opensource.org/licenses/mit-license.php</url>
-    </license>
-  </licenses>
+    <developers>
+        <developer>
+            <id>asgeirn</id>
+            <email>asgeir@twingine.no</email>
+            <name>Asgeir Storesund Nilsen</name>
+            <timezone>1</timezone>
+        </developer>
+        <developer>
+            <id>nfalco79</id>
+            <name>Nikolas Falco</name>
+            <email>nfalco79@hotmail.com</email>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
 
-  <build>
-    <!-- Since new versions need to overwrite old versions, it's better not to have version number in the .hpi file name. -->
-    <finalName>${project.artifactId}</finalName>
-    <defaultGoal>package</defaultGoal>
-  </build>
+    <licenses>
+        <license>
+            <distribution>repo</distribution>
+            <name>The MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
 
-  <scm>
-    <connection>scm:git:ssh://github.com/jenkinsci/greenballs-plugin.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/jenkinsci/greenballs-plugin.git</developerConnection>
-    <url>https://github.com/jenkinsci/greenballs-plugin</url>
-  </scm>
+    <scm>
+        <connection>scm:git:ssh://github.com/jenkinsci/greenballs-plugin.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/greenballs-plugin.git</developerConnection>
+        <url>https://github.com/jenkinsci/greenballs-plugin</url>
+        <tag>HEAD</tag>
+    </scm>
 
-  <issueManagement>
-    <system>jira</system>
-    <url>https://issues.jenkins-ci.org/browse/JENKINS/component/15603</url>
-  </issueManagement>
-
-  <ciManagement>
-      <system>jenkins</system>
-      <url>https://buildhive.cloudbees.com/job/jenkinsci/job/greenballs-plugin/</url>
-  </ciManagement>
-
-  <repositories>
-    <repository>
-      <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
-    </repository>
-  </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
-    </pluginRepository>
-  </pluginRepositories>
-
-  <distributionManagement>
-    <repository>
-      <id>maven.jenkins-ci.org</id>
-      <url>http://maven.jenkins-ci.org:8081/content/repositories/releases/</url>
-    </repository>
-  </distributionManagement>
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>

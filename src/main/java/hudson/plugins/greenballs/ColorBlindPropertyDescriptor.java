@@ -11,36 +11,22 @@ import org.kohsuke.stapler.StaplerRequest;
 @Extension
 public class ColorBlindPropertyDescriptor extends UserPropertyDescriptor {
 
-  public ColorBlindPropertyDescriptor() {
-    super(ColorBlindProperty.class);
-  }
-
-  @Override
-  public String getDisplayName() {
-    return Messages.ColorBlindSupport_DisplayName();
-  }
-
-  private ColorBlindProperty newInstanceIfJSONIsNull(StaplerRequest req) throws FormException {
-    if (req.getParameter("enabledColorBlindSupport") != null) {
-      return new ColorBlindProperty(Boolean.parseBoolean(req.getParameter("enabledColorBlindSupport")));
-    } else {
-      return new ColorBlindProperty();
+    public ColorBlindPropertyDescriptor() {
+        super(ColorBlindProperty.class);
     }
-  }
 
-  @Override
-  public ColorBlindProperty newInstance(StaplerRequest req, JSONObject formData) throws hudson.model.Descriptor.FormException {
-    if (formData == null) {
-      return newInstanceIfJSONIsNull(req);
+    @Override
+    public String getDisplayName() {
+        return Messages.ColorBlindSupport_DisplayName();
     }
-    if (formData.has("enabledColorBlindSupport")) {
-      return req.bindJSON(ColorBlindProperty.class, formData);
-    }
-    return new ColorBlindProperty();
-  }
 
-  @Override
-  public UserProperty newInstance(User arg0) {
-    return null;
-  }
+    @Override
+    public ColorBlindProperty newInstance(StaplerRequest req, JSONObject formData) {
+        return req.bindJSON(ColorBlindProperty.class, formData);
+    }
+
+    @Override
+    public UserProperty newInstance(User arg0) {
+        return null;
+    }
 }
