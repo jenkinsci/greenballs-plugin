@@ -22,7 +22,6 @@ public class GreenBallsPlugin extends Plugin {
     @Override
     public void start() throws Exception {
         super.start();
-        load();
         PluginServletFilter.addFilter(new GreenBallFilter());
         try {
             Field colorValue = Color.class.getDeclaredField("value");
