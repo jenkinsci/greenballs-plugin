@@ -30,11 +30,11 @@ public class GreenBallFilter implements Filter {
 
     private static final String patternStr = "/(\\d{2}x\\d{2})/%s(_anime|)\\.(gif|png)";
 
-    private static final Pattern patternBlue = Pattern.compile(String.format(patternStr, "blue"));
+    public static final Pattern patternBlue = Pattern.compile(String.format(patternStr, "blue"));
 
-    private static final Pattern patternRed = Pattern.compile(String.format(patternStr, "red"));
+    public static final Pattern patternRed = Pattern.compile(String.format(patternStr, "red"));
 
-    private static final Pattern patternYellow = Pattern.compile(String.format(patternStr, "yellow"));
+    public static final Pattern patternYellow = Pattern.compile(String.format(patternStr, "yellow"));
 
     private static final Logger logger = Logger.getLogger("hudson.plugins.greenballs");
 
