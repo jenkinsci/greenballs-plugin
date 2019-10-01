@@ -66,7 +66,7 @@ public class GreenBallFilter implements Filter {
 
     private String mapImage(String uri) {
         // Fix for JENKINS-28422
-        Jenkins jenkins = Jenkins.getActiveInstance();
+        Jenkins jenkins = Jenkins.getInstance();
         if (InitMilestone.EXTENSIONS_AUGMENTED.compareTo(jenkins.getInitLevel()) > 0) {
             return null;
         }
