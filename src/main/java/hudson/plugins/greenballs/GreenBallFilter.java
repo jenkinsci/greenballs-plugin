@@ -28,15 +28,15 @@ import jenkins.model.Jenkins;
  */
 public class GreenBallFilter implements Filter {
 
-    final String patternStr = "/(\\d{2}x\\d{2})/%s(_anime|)\\.(gif|png)";
+    private static final String patternStr = "/(\\d{2}x\\d{2})/%s(_anime|)\\.(gif|png)";
 
-    final Pattern patternBlue = Pattern.compile(String.format(patternStr, "blue"));
+    private static final Pattern patternBlue = Pattern.compile(String.format(patternStr, "blue"));
 
-    final Pattern patternRed = Pattern.compile(String.format(patternStr, "red"));
+    private static final Pattern patternRed = Pattern.compile(String.format(patternStr, "red"));
 
-    final Pattern patternYellow = Pattern.compile(String.format(patternStr, "yellow"));
+    private static final Pattern patternYellow = Pattern.compile(String.format(patternStr, "yellow"));
 
-    final Logger logger = Logger.getLogger("hudson.plugins.greenballs");
+    private static final Logger logger = Logger.getLogger("hudson.plugins.greenballs");
 
     @Override
     public void init(FilterConfig config) throws ServletException {
