@@ -1,5 +1,6 @@
 package hudson.plugins.greenballs;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.model.UserProperty;
 import hudson.model.UserPropertyDescriptor;
@@ -15,13 +16,13 @@ public class ColorBlindPropertyDescriptor extends UserPropertyDescriptor {
         super(ColorBlindProperty.class);
     }
 
-    @Override
+    @Override @NonNull
     public String getDisplayName() {
         return Messages.ColorBlindSupport_DisplayName();
     }
 
     @Override
-    public ColorBlindProperty newInstance(StaplerRequest req, JSONObject formData) {
+    public ColorBlindProperty newInstance(StaplerRequest req, @NonNull JSONObject formData) {
         return req.bindJSON(ColorBlindProperty.class, formData);
     }
 

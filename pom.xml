@@ -28,13 +28,13 @@ THE SOFTWARE.
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>3.50</version>
+        <version>4.13</version>
     </parent>
 
     <properties>
         <revision>1.15</revision>
         <changelist>-SNAPSHOT</changelist>
-        <jenkins.version>2.60.3</jenkins.version>
+        <jenkins.version>2.190.3</jenkins.version>
         <java.level>8</java.level>
     </properties>
 
@@ -88,7 +88,7 @@ THE SOFTWARE.
             </snapshots>
         </repository>
     </repositories>
-    
+
     <pluginRepositories>
         <pluginRepository>
             <id>repo.jenkins-ci.org</id>
