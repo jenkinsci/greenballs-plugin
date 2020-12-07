@@ -31,7 +31,7 @@ THE SOFTWARE.
     </parent>
 
     <properties>
-        <revision>1.15</revision>
+        <revision>1.15.2</revision>
         <changelist>-SNAPSHOT</changelist>
         <jenkins.version>2.190.3</jenkins.version>
         <java.level>8</java.level>
@@ -39,7 +39,7 @@ THE SOFTWARE.
 
     <artifactId>greenballs</artifactId>
     <packaging>hpi</packaging>
-    <version>1.15.1</version>
+    <version>${revision}${changelist}</version>
     <name>Green Balls</name>
     <description>Because green balls are better than blue</description>
     <url>https://github.com/jenkinsci/greenballs-plugin</url>
@@ -72,7 +72,7 @@ THE SOFTWARE.
         <connection>scm:git:ssh://github.com/jenkinsci/greenballs-plugin.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/greenballs-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/greenballs-plugin</url>
-        <tag>greenballs-1.15.1</tag>
+        <tag>${scmTag}</tag>
     </scm>
 
     <repositories>
