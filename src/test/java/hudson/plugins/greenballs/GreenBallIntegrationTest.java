@@ -15,7 +15,7 @@ import org.junit.Test;
 import org.jvnet.hudson.test.JenkinsRule;
 import org.jvnet.hudson.test.JenkinsRule.WebClient;
 
-import com.gargoylesoftware.htmlunit.WebResponse;
+import org.htmlunit.WebResponse;
 
 /**
  *
