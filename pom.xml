@@ -33,8 +33,7 @@ THE SOFTWARE.
     <properties>
         <revision>1.15.2</revision>
         <changelist>-SNAPSHOT</changelist>
-        <jenkins.version>2.190.3</jenkins.version>
-        <java.level>8</java.level>
+        <jenkins.version>2.387.3</jenkins.version>
     </properties>
 
     <artifactId>greenballs</artifactId>
