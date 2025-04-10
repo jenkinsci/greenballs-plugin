@@ -80,11 +80,11 @@ public class GreenBallFilter implements Filter {
             ColorBlindProperty colorBlindProperty = user.getProperty(ColorBlindProperty.class);
             if (colorBlindProperty != null && colorBlindProperty.isEnabledColorBlindSupport()) {
                 if ((m = patternBlue.matcher(uri)).find()) {
-                    return basePath + "colorblind" + m.group(1) + "/green" + m.group(2) + ".gif";
+                    return basePath + "colorblind" + "/" + m.group(1) + "/green" + m.group(2) + ".gif";
                 } else if ((m = patternRed.matcher(uri)).find()) {
-                    return basePath + "colorblind" + m.group(1) + "/red" + m.group(2) + ".gif";
+                    return basePath + "colorblind" + "/" + m.group(1) + "/red" + m.group(2) + ".gif";
                 } else if ((m = patternYellow.matcher(uri)).find()) {
-                    return basePath + "colorblind" + m.group(1) + "/yellow" + m.group(2) + ".gif";
+                    return basePath + "colorblind" + "/" + m.group(1) + "/yellow" + m.group(2) + ".gif";
                 }
                 return null;
             }
